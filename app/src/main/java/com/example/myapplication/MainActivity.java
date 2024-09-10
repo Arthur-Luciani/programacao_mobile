@@ -1,28 +1,43 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int cont = 0;
+    int nInicial = 10;
+    int nFInal = 100;
 
+    EditText textInicial, textFinal;
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button butao = findViewById(R.id.butao);
-        butao.setText("Click here");
+        textInicial = findViewById(R.id.nInicial);
+        textFinal = findViewById(R.id.nFinal);
 
         TextView texto = findViewById(R.id.texto);
-        texto.setText("Total cliques " + cont);
+        texto.setText("Número aleatório " + new Random().nextInt(100));
 
-        butao.setOnClickListener(view -> texto.setText("Total cliques " + cont++));
-
+        Button butao = findViewById(R.id.butao);
+        butao.setText("Click here");
+        butao.setOnClickListener(view -> {
+            nInicial = Integer.parseInt(textInicial.getText().toString());
+            nFInal = Integer.parseInt(textFinal.getText().toString());
+            texto.setText("Número aleatório " + new Random().nextInt((nFInal - nInicial + 1) + nInicial));
+        });
     }
 
 
