@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="initial_btn">Clique aqui</string>
     <string name="tela3">Activity3</string>
 </resources>
