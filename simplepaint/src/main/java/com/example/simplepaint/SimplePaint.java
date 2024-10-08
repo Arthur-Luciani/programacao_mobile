@@ -1,7 +1,6 @@
 package com.example.simplepaint;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -12,26 +11,14 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class SimplePaint extends View {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Path path = new Path();
-
-    private Paint paint = new Paint();
-
+public class SimplePaint extends BasePaint {
 
     public SimplePaint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(6f);
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.STROKE);
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.drawPath(path, paint);
     }
 
     @Override
@@ -42,11 +29,12 @@ public class SimplePaint extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(x, y);
+                saveLayer();
                 invalidate();
                 return true;
             case MotionEvent.ACTION_MOVE:
                 path.lineTo(x, y);
-                invalidate();
+                saveLayer();
                 return true;
             case MotionEvent.ACTION_UP:
                 break;
@@ -54,4 +42,10 @@ public class SimplePaint extends View {
         invalidate();
         return super.onTouchEvent(event);
     }
+
+    public void setColor(int color) {
+        saveLayer();
+        paint.setColor(color);
+    }
+
 }
