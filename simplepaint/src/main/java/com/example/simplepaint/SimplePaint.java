@@ -3,6 +3,7 @@ package com.example.simplepaint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.Nullable;
 
@@ -20,15 +21,15 @@ public class SimplePaint extends BasePaint {
         System.out.println(event.getAction());
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                actualPath.moveTo(x, y);
+                previewPath.moveTo(x, y);
                 invalidate();
                 return true;
             case MotionEvent.ACTION_MOVE:
-                actualPath.lineTo(x, y);
+                previewPath.lineTo(x, y);
                 invalidate();
                 return true;
             case MotionEvent.ACTION_UP:
-                saveLayer();
+                saveLayer(previewPaint.getColor());
                 invalidate();
                 break;
         }
@@ -37,7 +38,8 @@ public class SimplePaint extends BasePaint {
     }
 
     public void setColor(int color) {
-        saveLayer();
-        actualPaint.setColor(color);
+        saveLayer(previewPaint.getColor());
+        previewPaint.setColor(color);
     }
+
 }

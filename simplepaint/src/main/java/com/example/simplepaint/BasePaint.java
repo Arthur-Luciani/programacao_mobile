@@ -16,21 +16,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BasePaint extends View {
-
-    protected Path actualPath;
-    protected Paint actualPaint;
-    private Path previewPath = new Path();
-    private Paint previewPaint;
+    protected Path previewPath = new Path();
+    protected Paint previewPaint = createPaint(Color.BLACK);
     protected Map<Paint, Path> layers;
-
-    ArrayAdapter<String> adapter;
 
     public BasePaint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        savePath();
-        savePaint();
         layers = new HashMap<>();
-        saveLayer();
+        saveLayer(Color.BLACK);
     }
 
     @Override
@@ -40,27 +33,18 @@ public class BasePaint extends View {
         canvas.drawPath(previewPath, previewPaint);
     }
 
-    protected void savePaint() {
-        actualPaint = createPaint();
-        previewPaint = actualPaint;
-    }
-
-    private Paint createPaint() {
+    private Paint createPaint(int color) {
         Paint p = new Paint();
-        p.setColor(Color.BLACK);
+        p.setColor(color);
         p.setStrokeWidth(10F);
         p.setAntiAlias(true);
         p.setStyle(Paint.Style.STROKE);
         return p;
     }
 
-    protected void savePath() {
-        actualPath = new Path();
-        previewPath = actualPath;
-    }
-
-    protected void saveLayer() {
-        savePaint();
+    protected void saveLayer(int color) {
+        previewPath = new Path();
+        previewPaint = createPaint(color);
         layers.put(previewPaint, previewPath);
     }
 }
