@@ -1,24 +1,15 @@
 package com.example.simplepaint;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 
 import androidx.annotation.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SimplePaint extends BasePaint {
 
     public SimplePaint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-
     }
 
     @Override
@@ -26,17 +17,19 @@ public class SimplePaint extends BasePaint {
         float x = event.getX();
         float y = event.getY();
 
+        System.out.println(event.getAction());
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                path.moveTo(x, y);
-                saveLayer();
+                actualPath.moveTo(x, y);
                 invalidate();
                 return true;
             case MotionEvent.ACTION_MOVE:
-                path.lineTo(x, y);
-                saveLayer();
+                actualPath.lineTo(x, y);
+                invalidate();
                 return true;
             case MotionEvent.ACTION_UP:
+                saveLayer();
+                invalidate();
                 break;
         }
         invalidate();
@@ -45,7 +38,6 @@ public class SimplePaint extends BasePaint {
 
     public void setColor(int color) {
         saveLayer();
-        paint.setColor(color);
+        actualPaint.setColor(color);
     }
-
 }
