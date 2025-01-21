@@ -1,4 +1,4 @@
-package com.ifsc.sensor;
+package com.example.sensores;
 
 import org.junit.Test;
 
