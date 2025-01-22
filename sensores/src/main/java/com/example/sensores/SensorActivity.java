@@ -15,20 +15,16 @@ import com.example.myapplication.R;
 public class SensorActivity extends AppCompatActivity {
 
     private TextView textView;
+    private SensorManager sm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor_activity);
         textView = findViewById(R.id.txt);
-        //sensorConfig();
-    }
-
-/*    private void sensorConfig() {
-        SensorManager sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Sensor sensor = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
-        SensorEventListener sensorEventListener = getSensorListener();
-        sm.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sm.registerListener(getSensorListener(), sensor, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     private SensorEventListener getSensorListener() {
@@ -43,5 +39,5 @@ public class SensorActivity extends AppCompatActivity {
 
             }
         };
-    }*/
+    }
 }
