@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/mensagens" />
             <option value="$PROJECT_DIR$/sensores" />
+            <option value="$PROJECT_DIR$/sorteionumeros" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
