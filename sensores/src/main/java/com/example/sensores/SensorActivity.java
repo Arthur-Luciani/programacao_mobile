@@ -8,30 +8,47 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.R;
 
 public class SensorActivity extends AppCompatActivity {
 
-    private TextView textView;
-    private SensorManager sm;
+    private TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initialConfig();
+        txt = findViewById(R.id.txt);
+        sensorConfig();
+    }
+
+    private void initialConfig() {
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_sensor_activity);
-        textView = findViewById(R.id.txt);
-        sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+
+    private void sensorConfig() {
+        SensorManager sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         Sensor sensor = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
-        sm.registerListener(getSensorListener(), sensor, SensorManager.SENSOR_DELAY_FASTEST);
+        sm.registerListener(getSensorListener(), sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     private SensorEventListener getSensorListener() {
         return new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                textView.setText(String.valueOf(event.values[0]));
+                txt.setText(String.valueOf(event.values[0]));
             }
 
             @Override
