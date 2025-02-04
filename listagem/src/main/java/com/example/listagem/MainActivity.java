@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnRecycler = findViewById(R.id.btnRec);
 
         setupButton(btnList, List.class);
-        setupButton(btnRecycler, Recycler.class);
+        setupButton(btnRecycler, RecyclerView.Recycler.class);
 
     }
 

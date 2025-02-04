@@ -4,17 +4,20 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/launcher" />
             <option value="$PROJECT_DIR$/listagem" />
             <option value="$PROJECT_DIR$/mensagens" />
             <option value="$PROJECT_DIR$/sensores" />
+            <option value="$PROJECT_DIR$/sensores/launcher" />
+            <option value="$PROJECT_DIR$/sensores/taco" />
             <option value="$PROJECT_DIR$/sorteionumeros" />
+            <option value="$PROJECT_DIR$/taco" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

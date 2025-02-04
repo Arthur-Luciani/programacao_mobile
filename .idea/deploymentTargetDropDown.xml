@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="deploymentTargetDropDown">
+    <value>
+      <entry key="MainActivity">
+        <State />
+      </entry>
+      <entry key="MainActivity (1)">
+        <State />
+      </entry>
+      <entry key="MainActivity (2)">
+        <State />
+      </entry>
+      <entry key="SensorActivity">
+        <State />
+      </entry>
+      <entry key="app">
+        <State />
+      </entry>
+      <entry key="launcher">
+        <State />
+      </entry>
+      <entry key="listagem">
+        <State />
+      </entry>
+      <entry key="mensagens">
+        <State />
+      </entry>
+      <entry key="sensores">
+        <State />
+      </entry>
+      <entry key="sensores.launcher">
+        <State />
+      </entry>
+      <entry key="sensores.taco">
+        <State />
+      </entry>
+      <entry key="sorteionumeros">
+        <State />
+      </entry>
+      <entry key="taco">
+        <State />
+      </entry>
+    </value>
+  </component>
+</project>
